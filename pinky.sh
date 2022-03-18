@@ -14,6 +14,6 @@ for user in $lesUsers; do
 			quantiteUser=$(($quantiteUser+$quantiteLine))
 		fi
 	done
-	echo $user $quantiteUser >> pinkyResults.txt
+	echo "{'$user': $quantiteUser}" >> pinkyResults.txt
 done
 IFS="$OIFS"
