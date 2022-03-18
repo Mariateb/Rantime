@@ -1,0 +1,26 @@
+import subprocess
+
+commande = "ps -ux"
+process =  subprocess.Popen(commande.split(), stdout=subprocess.PIPE)
+output, error = process.communicate()
+listeProcess = output.split("\n")
+for i in range(len(listeProcess)):
+	listeProcess[i] = " ".join(listeProcess[i].split())
+	listeProcess[i] = listeProcess[i].split(" ")
+listeProcess.pop(0)
+listeProcess.pop(len(listeProcess)-1)
+newListeProcess = []
+for i in range(len(listeProcess)):
+	sousListe = []
+	sousListe.append(listeProcess[i][0])
+	sousListe.append(listeProcess[i][2])
+	newListeProcess.append(sousListe)
+# on passe la liste en dictionnaire avec les valeurs additionnees :))))
+dicoUsage = {}
+for i in range(len(newListeProcess)):
+	user = newListeProcess[i][0]
+	if user in dicoUsage:
+		dicoUsage[user] += float(newListeProcess[i][1])
+	else:
+		dicoUsage[user] = float(newListeProcess[i][1])
+print(dicoUsage)
