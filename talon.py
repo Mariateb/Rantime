@@ -3,10 +3,10 @@ import subprocess
 commande = "ps -ux"
 process =  subprocess.Popen(commande.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
-listeProcess = output.split("\n")
+listeProcess = output.split('\n'.encode())
 for i in range(len(listeProcess)):
-	listeProcess[i] = " ".join(listeProcess[i].split())
-	listeProcess[i] = listeProcess[i].split(" ")
+	listeProcess[i] = b" ".join(listeProcess[i].split())
+	listeProcess[i] = listeProcess[i].split(" ".encode())
 listeProcess.pop(0)
 listeProcess.pop(len(listeProcess)-1)
 newListeProcess = []
