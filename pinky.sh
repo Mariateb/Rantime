@@ -5,6 +5,7 @@ IFS=$'\n'
 
 lesUsers=`less /etc/passwd | cut -d":" -f1`
 laListe=`ps -aux | sed 's/  */ /g' | cut -d" " -f1,5`
+echo "{" >> pinkyResults.txt
 for user in $lesUsers; do
 	echo $user
 	quantiteUser=0
@@ -15,6 +16,10 @@ for user in $lesUsers; do
 			quantiteUser=$(($quantiteUser+$quantiteLine))
 		fi
 	done
-	echo "{'$user': $quantiteUser}" >> pinkyResults.txt
+	if [ $quantiteUser != 0 ]; then
+		echo "'$user': $quantiteUser," >> pinkyResults.txt
+	fi
 done
+echo "}" >> pinkyResults.txt
+
 IFS="$OIFS"

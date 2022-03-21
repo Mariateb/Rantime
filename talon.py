@@ -18,7 +18,7 @@ for i in range(len(listeProcess)):
 # on passe la liste en dictionnaire avec les valeurs additionnees :))))
 dicoUsage = {}
 for i in range(len(newListeProcess)):
-	user = newListeProcess[i][0]
+	user = newListeProcess[i][0].decode()
 	if user in dicoUsage:
 		dicoUsage[user] += float(newListeProcess[i][1])
 	else:
