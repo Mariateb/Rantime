@@ -1,1 +1,4 @@
-
+ 
+{'root': 4462932,'dbus': 10140,'avahi': 17168,'polkitd': 2707224,'rtkit': 153976,'sabrim': 168334666}
+{'root': 2.8000000000000003, 'systemd+': 0.0, 'avahi': 0.0, 'dbus': 0.0, 'polkitd': 0.2, 'sabrim': 87.20000000000002, 'rtkit': 0.0}
+{'root': 4.299999999999999, 'systemd+': 0.0, 'avahi': 0.0, 'dbus': 0.0, 'polkitd': 0.0, 'sabrim': 44.10000000000001, 'rtkit': 0.0}

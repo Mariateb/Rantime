@@ -23,4 +23,6 @@ for i in range(len(newListeProcess)):
 		dicoUsage[user] += float(newListeProcess[i][1])
 	else:
 		dicoUsage[user] = float(newListeProcess[i][1])
-print(dicoUsage)
+fic = open("result.txt","a")
+fic.write(str(dicoUsage) + '\n')
+fic.close()
