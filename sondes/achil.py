@@ -1,6 +1,6 @@
 import subprocess
 
-commande = "ps -aux"
+commande = "ps -ux"
 process =  subprocess.Popen(commande.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
 listeProcess = output.split("\n".encode())

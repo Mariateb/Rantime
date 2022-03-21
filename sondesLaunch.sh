@@ -1,6 +1,4 @@
-echo "JE LANCE PINKY"
-`bash sondes/pinky.sh`
-echo "JE LANCE TALON"
-`python sondes/talon.py`
-echo "JE LANCE ACHIL"
-`python sondes/achil.py`
+date +'%Y/%m/%d/%r' > result.txt
+python sondes/talon.py
+python sondes/achil.py
+bash sondes/pinky.sh

@@ -1,6 +1,6 @@
 import subprocess
 
-commande = "ps -aux"
+commande = "ps -ux"
 process =  subprocess.Popen(commande.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
 listeProcess = output.split('\n'.encode())
@@ -23,6 +23,6 @@ for i in range(len(newListeProcess)):
 		dicoUsage[user] += float(newListeProcess[i][1])
 	else:
 		dicoUsage[user] = float(newListeProcess[i][1])
-fic = open("../result.txt","a")
+fic = open("result.txt","a")
 fic.write(str(dicoUsage) + '\n')
 fic.close()

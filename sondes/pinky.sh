@@ -1,12 +1,9 @@
 OIFS="$IFS"
 IFS=$'\n'
 
-`touch ../result.txt`
-
-lesUsers=`less /etc/passwd | cut -d":" -f1`
-laListe=`ps -aux | sed 's/  */ /g' | cut -d" " -f1,5`
-printf '\n' >> ../result.txt
-printf "{" >> ../result.txt
+lesUsers=`users`
+laListe=`ps -ux | sed 's/  */ /g' | cut -d" " -f1,5`
+printf "{" >> result.txt
 for user in $lesUsers; do
 	quantiteUser=0
 	for line in $laListe; do
@@ -16,11 +13,9 @@ for user in $lesUsers; do
 			quantiteUser=$(($quantiteUser+$quantiteLine))
 		fi
 	done
-	if [ $quantiteUser != 0 ]; then
-		printf "'$user': $quantiteUser," >> ../result.txt
-	fi
+	printf "'$user': $quantiteUser," >> result.txt
 done
-`truncate -s-2 ../result.txt`
-echo "}" >> ../result.txt
+`truncate -s-2 result.txt`
+echo "}" >> result.txt
 
 IFS="$OIFS"
