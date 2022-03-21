@@ -1,11 +1,12 @@
 OIFS="$IFS"
 IFS=$'\n'
 
-`touch pinkyResults.txt | > pinkyResults.txt`
+`touch result.txt`
 
 lesUsers=`less /etc/passwd | cut -d":" -f1`
 laListe=`ps -aux | sed 's/  */ /g' | cut -d" " -f1,5`
-printf "{" >> pinkyResults.txt
+printf '\n' >> result.txt
+printf "{" >> result.txt
 for user in $lesUsers; do
 	echo $user
 	quantiteUser=0
@@ -17,10 +18,10 @@ for user in $lesUsers; do
 		fi
 	done
 	if [ $quantiteUser != 0 ]; then
-		printf "'$user': $quantiteUser," >> pinkyResults.txt
+		printf "'$user': $quantiteUser," >> result.txt
 	fi
 done
-`truncate -s-2 pinkyResults.txt`
-echo "}" >> pinkyResults.txt
+`truncate -s-2 result.txt`
+echo "}" >> result.txt
 
 IFS="$OIFS"
