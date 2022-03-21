@@ -4,7 +4,7 @@ IFS=$'\n'
 `touch pinkyResults.txt | > pinkyResults.txt`
 
 lesUsers=`users`
-laListe=`ps -ux | sed 's/  */ /g' | cut -d" " -f1,5`
+laListe=`ps -aux | sed 's/  */ /g' | cut -d" " -f1,5`
 for user in $lesUsers; do
 	quantiteUser=0
 	for line in $laListe; do
