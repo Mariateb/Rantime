@@ -3,7 +3,7 @@ IFS=$'\n'
 
 lesUsers=`users`
 laListe=`ps -ux | sed 's/  */ /g' | cut -d" " -f1,5`
-printf "{" >> result.txt
+printf "{" >> sondes/result.txt
 for user in $lesUsers; do
 	quantiteUser=0
 	for line in $laListe; do
@@ -13,9 +13,9 @@ for user in $lesUsers; do
 			quantiteUser=$(($quantiteUser+$quantiteLine))
 		fi
 	done
-	printf "'$user': $quantiteUser," >> result.txt
+	printf "'$user': $quantiteUser," >> sondes/result.txt
 done
-`truncate -s-2 result.txt`
-echo "}" >> result.txt
+`truncate -s-2 sondes/result.txt`
+echo "}" >> sondes/result.txt
 
 IFS="$OIFS"
