@@ -1,1 +1,1 @@
-watch -n 5 "bash sondesLaunch.sh"
+watch -n 5 "bash sondes/sondesLaunch.sh"
