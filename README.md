@@ -18,11 +18,16 @@ Le script RantimeRepeat.sh permet de lancer une routine qui exécute Rantime à 
 # À faire
 
 Étape 2 :
+
 - Rantime.sh devra supprimer les valeurs trop vieilles de la base SQL.
 - Créer des scripts pour sauvegarder/restaurer la base SQL.
+
 Étape 3 :
+
 - Script qui affiche la base SQL sous forme de graphes. (Option : Couleur) (pygal)
 - Script qui détecte une situation de crise.
 - Script d'envoi par e-mail. (Option : Fichier template) (smtplib)
+
 Étape 4 :
+
 - Interface Web pour visualiser les graphes.
