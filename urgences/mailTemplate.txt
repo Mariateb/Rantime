@@ -1,22 +1,18 @@
-sabmou05@gmail.com
-
-//////
-
-Allô allô,
+sabmou05@gmail.com//////Allo allo,
 monsieur l'administrateur,
 dites moi, dites moi,
 pourquoi le PC il meurt.
 
-une activité suspecte (:flushed:) a été détectée sur la machine, sur un de ces points là
+une activite suspecte (:flushed:) a ete detectee sur la machine, sur un de ces points la
 - cpu
-- mémoire
+- memoire
 - vsz
 
-voici la liste des actions et des utilisateurs concernés (:hein:)
+voici la liste des actions et des utilisateurs concernes (:hein:)
 $(list)
 
-bien à vous,
-message automatisé
+bien a vous,
+message automatise
 
 
 
