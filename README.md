@@ -1,14 +1,14 @@
-# le schmilbick
+# Rantime
 
-en fait basiquement y'a trois fichiers qui trackent un élément du lounics actuel
-- talon (pour la ram utilisée)
-- achilles (qui est une copie de talon)
-- pinky (pour la VSZ allouée)
+Rantime est un outil pour sonder des détails de l'OS Linux utilisé actuellement, et ce pour tous les utilisateurs.
+Il est compoés de trois sondes :
+- Talon (%RAM utilisée) (Python)
+- Achilles (%CPU utilisé) (Python)
+- Pinky (VSZ allouée) (Bash)
 
-et le but c'est de traquer ça pour chaque utilisatuer et le stocker quelque part
+Le script Rantime.sh permet de lancer les sondes et de stocker le résultat dans une base SQL : database/logs.db
+Le script RantimeRepeat.sh permet de lancer une routine qui exécute Rantime à intervalles réguliers
 
-# à faire
-1. fichier .py qui prend les outputs des trois abrutis là et qui en fait un seul dico
-2. le faire enregistrer tout ça dans une db sql avec l'heure et tout
-3. - merde j'vais devoir faire de la modélisation
-4. j'ai pas lu le reste du sujet lol
+# À faire
+1. Rantime.sh devra supprimer les valeurs trop vieilles de la base SQL.
+2. Créer des scripts pour sauvegarder/restaurer la base SQL.
