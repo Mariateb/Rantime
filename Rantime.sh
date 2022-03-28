@@ -5,3 +5,4 @@ python sondes/talon.py
 python sondes/achil.py
 bash sondes/pinky.sh
 python sondes/logger.py
+python urgences/detecterUrgence.py
