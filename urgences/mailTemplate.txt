@@ -3,6 +3,8 @@ monsieur l'administrateur,
 dites moi, dites moi,
 pourquoi le PC il meurt.
 
+
+pas bien !!!
 une activite suspecte (:flushed:) a ete detectee sur la machine, sur un de ces points la
 - cpu
 - memoire
