@@ -1,4 +1,9 @@
+import os, webbrowser
 
+
+exec(open("RantimeGraphUpdate.py").read())
+fic = open("graphs/index.html", "w")
+fic.write("""
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,23 +32,31 @@
 		</div>
 		<div class="w3-rest w3-margin w3-padding w3-theme-d2">
 		<h3>Historiques</h3>
+""")
 
+fic.close()
+fic = open("graphs/index.html", "a")
+for dir in os.listdir("graphs/images"):
+	fic.write("""
 			<div class="w3-margin w3-padding w3-theme-d3">
-				<h3>Utilisateur : sabrim</h3>
+				<h3>Utilisateur : """ + dir + """</h3>
 				<table class="w3-table-border" width="100%">
 					<tr>
-	
-						<td><img src='images/sabrim/vsz.svg'></td>
-		
-						<td><img src='images/sabrim/ram.svg'></td>
-		
-						<td><img src='images/sabrim/cpu.svg'></td>
-		
+	""")
+	for file in os.listdir("graphs/images/" + dir):
+		fic.write("""
+						<td><img src='images/""" + dir + "/" + file + """'></td>
+		""")
+	fic.write("""
 					</tr>
 				<table>
 			</div>
-	
+	""")
+fic.write("""
 		</div>
 	</div>
 </body>
 </html>
+""")
+
+webbrowser.open("graphs/index.html")

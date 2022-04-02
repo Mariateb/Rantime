@@ -9,6 +9,6 @@ done
 for filename in graphs/images/*; do
 	if [ -d "$filename" ]; then
 		echo "Données pour l'utilisateur $filename :"
-		feh -g 640x480 -d -S filename "$filename"
+		feh -g -d -S filename "$filename"
 	fi
 done
