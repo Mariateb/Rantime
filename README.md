@@ -9,7 +9,9 @@ L'outil permet également de détecter une situation de crise, et si la situatio
 (Le fichier urgences/mailTemplate.txt est modifiable et permet de donner le récepteur du mail)
 
 Le script Rantime.sh permet de lancer les sondes et de stocker le résultat dans une base SQL : database/logs.db
+
 Le script RantimeRepeat.sh permet de lancer une routine qui exécute Rantime à intervalles réguliers
+
 Le script RantimeStats.sh permet d'avoir les statistiques actuelles des sondes sous forme de graphique (pour chaque utilisateur)
 
 # Librairies utilisées
