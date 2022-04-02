@@ -1,4 +1,4 @@
-import pygal
+import pygal, datetime, os
 import sqlite3
 import webbrowser
 
@@ -9,24 +9,44 @@ cursor = connection.cursor()
 command = "SELECT distinct(user) FROM logs"
 cursor.execute(command)
 listeUsers = cursor.fetchall()
+
 for ligUsers in listeUsers:
 	user = ligUsers[0]
-	print(user)
 	command = "SELECT * FROM dates NATURAL JOIN logs WHERE user = '" + user + "' ORDER BY date_log ASC"
 	cursor.execute(command)
 	listLogs = cursor.fetchall()
-	# On transforme la base en dictionnaire de listes de 3 listes
+	laListe = [[],[],[],[]]
 	for ligne in listLogs:
-		print(ligne)
-	# On crée le graphe pour chaque utilisateur
-	# On génère le svg (qui sera utilisé par le HTML)
-line_chart = pygal.Line()
-line_chart.title = 'Browser usage evolution (in %)'
-line_chart.x_labels = map(str, range(2002, 2013))
-line_chart.add('Firefox', [None, None,    0, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
-line_chart.add('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
-line_chart.add('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
-line_chart.add('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
-line_chart.render_to_file("graphs/images/user.svg")
-# On ouvre le fichier HTML
-# webbrowser.open_new_tab("graphs/index.html")
+		# On fait une liste des datetimes
+		laListe[0].append(ligne[1].replace("/", " ").replace(":", " ").replace('\n', " ").split(" "))
+		# Liste de cpu usage
+		laListe[1].append(ligne[3])
+		# Liste de ram usage
+		laListe[2].append(ligne[4])
+		# Liste de VSZ
+		laListe[3].append(ligne[5])
+	# Liste des datetimes
+	listeDatetime = []
+	for i in laListe[0]:
+		listeDatetime.append(datetime.datetime(int(i[0]), int(i[1]), int(i[2]), int(i[3]), int(i[4]), int(i[5])))
+	# On crée le directory si il n'existe pas
+	if not os.path.exists("graphs/images/" + user):
+		os.mkdir("graphs/images/" + user)
+	# VSZ
+	lineChart = pygal.Line(x_label_rotation=40)
+	lineChart.title = "VSZ allouée pour l'utilisateur " + user
+	lineChart.x_labels = map(lambda d: d.strftime('%Y/%m/%d %H:%M:%S'), listeDatetime)
+	lineChart.add("VSZ", laListe[3])
+	lineChart.render_to_file("graphs/images/" + user + "/vsz.svg")
+	# CPU
+	lineChart = pygal.Line(x_label_rotation=40)
+	lineChart.title = "CPU utilisé pour l'utilisateur " + user
+	lineChart.x_labels = map(lambda d: d.strftime('%Y/%m/%d %H:%M:%S'), listeDatetime)
+	lineChart.add("CPU", laListe[1])
+	lineChart.render_to_file("graphs/images/" + user + "/cpu.svg")
+	# RAM
+	lineChart = pygal.Line(x_label_rotation=40)
+	lineChart.title = "RAM utilisée pour l'utilisateur " + user
+	lineChart.x_labels = map(lambda d: d.strftime('%Y/%m/%d %H:%M:%S'), listeDatetime)
+	lineChart.add("RAM", laListe[2])
+	lineChart.render_to_file("graphs/images/" + user + "/ram.svg")

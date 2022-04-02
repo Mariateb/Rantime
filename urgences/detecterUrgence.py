@@ -34,7 +34,7 @@ if listeUrgences != []:
 	context = ssl.create_default_context()
 	with smtplib.SMTP_SSL("smtpz.univ-avignon.fr", 465, context=context) as server:
 		server.login("sabri.moussa@alumni.univ-avignon.fr", mdp)
-		server.sendmail("sabri.moussa@alumni.univ-avignon.fr", mailDest, mailContenu)
+		# server.sendmail("sabri.moussa@alumni.univ-avignon.fr", mailDest, mailContenu)
 	print("Mail envoyé !")
 	
 else:

@@ -47,7 +47,7 @@ for row in identifiants:
 	diffTemps = datetime.datetime.now() - datetime.datetime(int(listdate[0]), int(listdate[1]), int(listdate[2]), int(listdate[3]), int(listdate[4]), int(listdate[5]))
 	anciennete = diffTemps.total_seconds()
 	# Si c'est plus vieux que 30 secondes (pour les tests), on supprime
-	if(anciennete > 30):
+	if(anciennete > 300):
 		idASupprimer = row[0]
 		commande = "DELETE FROM dates WHERE id_logs ='" + idASupprimer + "';"
 		cursor.execute(commande)
