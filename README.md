@@ -19,6 +19,9 @@ Le script RantimeWebDisplayer.py permet de générer (et d'afficher) une page we
 # Librairies utilisées
 
 - subprocess (Python)
+- os (Python)
+- webbrowser (Python)
+- datetime (Python)
 - sqlite3 (Python)
 - pygal (Python)
 - smptlib (Python)
