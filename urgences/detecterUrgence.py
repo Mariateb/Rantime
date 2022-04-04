@@ -28,13 +28,15 @@ if listeUrgences != []:
 	mailContenu = mailContenu.replace("$(list)", identifiantsCrise)
 	# On récupère mon mdp (très secret)
 	fichier = open("../../mdp.txt", "r")
-	mdp = fichier.read().replace("\n", "")
+	cont = fichier.read().split("\n")
+	mail = cont[0]
+	mdp = cont[1]
 	fichier.close()
 	# Envoie du mail :(
 	context = ssl.create_default_context()
 	with smtplib.SMTP_SSL("smtpz.univ-avignon.fr", 465, context=context) as server:
-		server.login("sabri.moussa@alumni.univ-avignon.fr", mdp)
-		# server.sendmail("sabri.moussa@alumni.univ-avignon.fr", mailDest, mailContenu)
+		server.login(mail, mdp)
+		server.sendmail("sabri.moussa@alumni.univ-avignon.fr", mailDest, mailContenu)
 	print("Mail envoyé !")
 	
 else:
